@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{%block content%}
+<h1>You have purchased cars {{cars | length}} till now</h1>
+
+<div class='d-flex justify-content-around m-3 g-2'>
+
+    {%for car in cars%}
+  
+  <div class="card m-3" style="width: 18rem;">
+  
+      <img src="{{car.image.url}}" class="card-img-top w-100" alt="...">
+  
+  
+      <h5 class="card-title"><a href="{% url 'detail' car.id %}">{{car.name}}</a></h5>
+      <div class="card-body">
+        <p class="card-text">{{car.description}}</p>
+      </div><br>
+  
+      <button class='btn btn-primary m-4' disabled >{{car.brand.name}}</button>
+      <br>
+      <p>Price: {{car.price}} BDT only</p>
+      <p>{{car.quantity}} left now</p>
+
+      {% endfor %}
+  
+      
+    </div>
+
+
+{% endblock %}

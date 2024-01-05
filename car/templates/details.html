@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{%load crispy_forms_tags%}
+
+{%block content%}
+
+<div class='m-3' >
+
+    <img src="{{car.image.url}}" alt="">
+    <h1>{{car.name}}</h1>
+    <p>{{car.description}} </p>
+    <button class='btn btn-primary'disabled >{{car.brand.name}}</button>
+    <p>{{car.quantity}} cars left </p>
+
+</div>
+
+{%if user.is_authenticated%}
+
+{%if car.quantity > 0 %}
+
+<div>
+
+    <a href="{% url 'buy_car' car.id %}" class='btn btn-danger m-5'> Buy now</a>
+</div>
+
+{%else%}
+
+<p>Stock out now</p>
+
+{% endif %}
+{% endif %}
+
+<h4>{{comments | length}} comments</h4>
+
+{% for comment in comments %}
+
+<div class='m-4 bg-light p-2' >
+    <h5>{{comment.name}}</h5> <br>
+    {{comment.text}}
+</div>
+
+
+{% endfor %}
+
+{%if user.is_authenticated%}
+
+<form action="" method='post' class='m-2'>
+    {% csrf_token %}
+    {{form | crispy}}
+    <button class='btn btn-warning' type='Submit'>Submit</button>
+    
+    </form>
+
+{% endif %}
+
+{% endblock %}
+
