@@ -3,10 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BuyCars</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script></head>
-<body >
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"  rel="stylesheet" />
+<body class="bg-zinc-900 flex flex-col min-h-screen">
+
+  <style>
+    .specialtext
+    {
+
+      -webkit-text-stroke: 1px black;
+    }
+  </style>
+
+
   <div class="navbar absolute top-0 left-0 w-full bg-transparent z-10">
     <div class="navbar-start">
       <div class="dropdown">
@@ -27,52 +38,49 @@
         <ul
           tabindex="0"
           class="menu menu-sm dropdown-content bg-red-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-          <li><a class="" aria-current="page" href="{% url 'home' %}">Home</a></li>
+          <li><a class="text-black text-2xl font-bold" aria-current="page" href="{% url 'home' %}">Home</a></li>
           {%if user.is_authenticated%}
 
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+            <a class="nav-link text-black text-2xl font-bold " href="{% url 'profile' %}">Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'user_logout' %}">Log Out</a>
+            <a class="nav-link text-black text-2xl font-bold" href="{% url 'user_logout' %}">Log Out</a>
           </li>
           {%else%}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'user_signup' %}">Sign Up</a>
+            <a class="nav-link text-black text-2xl font-bold" href="{% url 'user_signup' %}">Sign Up</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'user_login' %}">Log In</a>
+            <a class="nav-link text-black text-2xl font-bold" href="{% url 'user_login' %}">Log In</a>
           </li>
     
           {% endif %}
         </ul>
       </div>
-      <a class="btn btn-ghost text-xl">BuyCars</a>
+      <a class="btn btn-ghost text-4xl  text-rose-500 ">BuyCars</a>
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
-        <li><a class="" aria-current="page" href="{% url 'home' %}">Home</a></li>
+        <li><a class="text-white text-2xl font-bold underline underline-offset-8 specialtext " aria-current="page" href="{% url 'home' %}">Home</a></li>
           {%if user.is_authenticated%}
 
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+            <a class="nav-link text-white text-2xl font-bold underline underline-offset-8 specialtext" href="{% url 'profile' %}">Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'user_logout' %}">Log Out</a>
+            <a class="nav-link text-white text-2xl font-bold underline underline-offset-8 specialtext " href="{% url 'user_logout' %}">Log Out</a>
           </li>
           {%else%}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'user_signup' %}">Sign Up</a>
+            <a class="nav-link text-white text-2xl font-bold underline underline-offset-8 specialtext" href="{% url 'user_signup' %}">Sign Up</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'user_login' %}">Log In</a>
+            <a class="nav-link text-white text-2xl font-bold underline underline-offset-8 specialtext" href="{% url 'user_login' %}">Log In</a>
           </li>
     
           {% endif %}
       </ul>
-    </div>
-    <div class="navbar-end">
-      <a class="btn">Button</a>
     </div>
   </div>
   {% comment %}  {% endcomment %}
@@ -81,6 +89,14 @@
       {% block content %}
 
      {% endblock %}
+
+     <footer class="bg-gray-800 text-white py-4 w-full mt-auto">
+      <div class="container mx-auto text-center">
+        <p class="text-sm sm:text-base">&copy; 2024 Your Company. All rights reserved.</p>
+      </div>
+    </footer>
+    
+    
 
 
     

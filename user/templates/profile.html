@@ -1,30 +1,46 @@
 {% extends "base.html" %}
 {%block content%}
-<h1>You have purchased cars {{cars | length}} till now</h1>
+<div class="flex flex-col justify-center w-full min-h-48">
+  <h1 class="text-center text-2xl text-rose-400">
+    You have purchased cars {{ cars | length }} till now
+  </h1>
+</div>
 
-<div class='d-flex justify-content-around m-3 g-2'>
 
-    {%for car in cars%}
+<div class="flex flex-wrap justify-around m-3 gap-4">
+{% for car in cars %}
+<div class="max-w-sm flex flex-col justify-between bg-black rounded-lg shadow dark:bg-gray-800 text-white p-1">
   
-  <div class="card m-3" style="width: 18rem;">
-  
-      <img src="{{car.image.url}}" class="card-img-top w-100" alt="...">
-  
-  
-      <h5 class="card-title"><a href="{% url 'detail' car.id %}">{{car.name}}</a></h5>
-      <div class="card-body">
-        <p class="card-text">{{car.description}}</p>
-      </div><br>
-  
-      <button class='btn btn-primary m-4' disabled >{{car.brand.name}}</button>
-      <br>
-      <p>Price: {{car.price}} BDT only</p>
-      <p>{{car.quantity}} left now</p>
-
-      {% endfor %}
-  
-      
+  <!-- Image Section -->
+  <a href="#">
+    <div class="h-48 overflow-hidden">
+      <img class="w-full h-full object-cover" src="{{car.image.url}}" alt="{{car.name}}" />
     </div>
+  </a>
+
+  <!-- Content Section -->
+  <div class="flex flex-col justify-between p-4 h-full">
+    <div>
+      <a href="{% url 'detail' car.id %}">
+        <h5 class="mb-2 text-lg font-bold tracking-tight text-rose-400 dark:text-rose-400 ">{{car.name}}</h5>
+      </a>
+      <p class="mb-2 font-normal text-white">{{car.description}}</p>
+    </div>
+
+    <!-- Car Brand (Disabled Button) -->
+    <div class="mt-2">
+      <button class="bg-rose-500 mt-4 w-full p-4 rounded-md " disabled>{{car.brand.name}}</button>
+    </div>
+
+    <!-- Car Price and Quantity -->
+    <div class="mt-2">
+      <p class="font-semibold">Price: {{car.price}} BDT only</p>
+      <p>{{car.quantity}} left now</p>
+    </div>
+  </div>
+</div>
+{% endfor %}
+</div>
 
 
 {% endblock %}

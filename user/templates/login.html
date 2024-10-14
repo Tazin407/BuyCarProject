@@ -4,10 +4,17 @@
 
 {%block content%}
 
-<form action="" method='post' class='m-auto w-50'>
-{% csrf_token %}
-    {{form | crispy}}
-    <button class='btn btn-warning' type='Submit'>Submit</button>
-</form>
+<div class="pt-10">
+  <form action="" method="post" class="mx-auto bg-gray-800 text-rose-500 p-6 rounded-lg shadow-lg my-9 w-80">
+    {% csrf_token %}
+    <div class="m-4">
+      {{ form | crispy }}
+    </div>
+    <button class="bg-rose-500 hover:bg-rose-600 text-white py-3 rounded-lg w-full" type="submit">
+      Submit
+    </button>
+  </form>
+</div>
+
 
 {% endblock %}
