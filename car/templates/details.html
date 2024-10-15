@@ -6,12 +6,16 @@
 
 <div class='m-3 text-white' >
 
-    <img src="{{car.image.url}}" alt="">
-    <h1>{{car.name}}</h1>
-    <p>{{car.description}} </p>
-    <button class='btn btn-primary'disabled >{{car.brand.name}}</button>
+    <div class="items-center flex justify-center m-auto mt-4 p-3">
+        <img src="{{car.image.url}}" alt="">
+    </div>
+   <div class="m-3 flex flex-col g-3 mt-4" >
+    <h1 class="text-3xl">{{car.name}}</h1>
+    <p class="" >{{car.description}} </p>
+    <button class='bg-rose-300 opacity-50 p-3 w-48 rounded-lg text-black'disabled >{{car.brand.name}}</button>
     <p>{{car.quantity}} cars left </p>
 
+   </div>
 </div>
 
 {%if user.is_authenticated%}
@@ -20,7 +24,7 @@
 
 <div>
 
-    <a href="{% url 'buy_car' car.id %}" class='btn btn-danger m-5'> Buy now</a>
+    <a href="{% url 'buy_car' car.id %}" class='bg-rose-400 text-black p-3 rounded-lg m-5'> Buy now</a>
 </div>
 
 {%else%}
@@ -30,28 +34,32 @@
 {% endif %}
 {% endif %}
 
-<h4>{{comments | length}} comments</h4>
+<div class="m-3 text-white p-2" >
+    <h4>{{comments | length}} comments</h4>
 
 {% for comment in comments %}
 
-<div class='m-4 bg-light p-2' >
-    <h5>{{comment.name}}</h5> <br>
-    {{comment.text}}
+<div class='m-4 bg-slate-800 p-2 rounded-lg opacity-80' >
+    <h5 class="text-white font-bold text-3xl">{{comment.name}}</h5> <br>
+    <h2  >{{comment.text}}</h2>
 </div>
 
 
 {% endfor %}
 
-{%if user.is_authenticated%}
+</div>
+<div class="flex flex-col justify-center g-3 items-center" >
+    {%if user.is_authenticated%}
 
-<form action="" method='post' class='m-2'>
+<form action="w-96" method='post' class='m-2'>
     {% csrf_token %}
     {{form | crispy}}
-    <button class='btn btn-warning' type='Submit'>Submit</button>
+    <button class='rounded-lg bg-rose-400 w-48 p-3 text-black' type='Submit'>Submit</button>
     
     </form>
 
 {% endif %}
+</div>
 
 {% endblock %}
 
