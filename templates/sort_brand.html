@@ -3,56 +3,54 @@
 
 {%block content%}
 
-<div class='flex justify-around row'>
 
-  {% comment %} <div class='col-4'>
-    <h1 class='m-5'>Welcome to BuyCars</h1> 
-  </div> {% endcomment %}
-
-  <div class='col-6'>
-    <img class='mt-3 w-100' src="./static/car1.jpg" alt="">
-  </div>
-
-</div>
-
-<div class='m-4' >
-  <h3>Search by brands</h3><br>
-   <p>{{cars | length}} Results found </p>
+<div class='m-auto p-auto text-center' >
+   <p class="text-3xl text-white mt-20" >{{cars | length}} Result(s) found </p>
 </div>
 
 <div class='flex justify-around m-3' >
 
 {% comment %} {%for b in brands%} {% endcomment %}
 
-<a href="" class='btn btn-light'> {{brands}} </a>
+<a href="" class='bg-rose-500 mt-4 p-2 rounded-md text-white'> {{brands}} </a>
 
 
 {% comment %} {%endfor%} {% endcomment %}
 
 </div>
 
-<div class='flex justify-around m-3 g-2'>
+<div class="flex flex-wrap justify-center m-3 gap-2">
+  {% for car in cars %}
+    <div class=" m-1 max-w-md flex flex-col justify-between bg-black rounded-lg shadow dark:bg-gray-800 text-white p-1">
+      
+      <!-- Image Section -->
+      <a href="#">
+        <div class="h-48 overflow-hidden p-3">
+          <img class="w-full h-full object-cover" src="{{car.image.url}}" alt="{{car.name}}" />
+        </div>
+      </a>
 
-  {%for car in cars%}
+      <!-- Content Section -->
+      <div class="flex flex-col justify-between p-4 h-full">
+        <div>
+          <a href="{% url 'detail' car.id %}">
+            <h5 class="mb-2 text-lg font-bold tracking-tight text-rose-400 ">{{car.name}}</h5>
+          </a>
+        </div>
 
-<div class="card m-3" style="width: 18rem;">
+        <!-- Car Brand (Disabled Button) -->
+        <div class="">
+          <button class="bg-rose-700 w-4/12 text-center p-4 rounded-full text-black" disabled>{{car.brand.name}}</button>
+        </div>
 
-    <img src="{{car.image.url}}" class="card-img-top w-100" alt="...">
-
-
-    <h5 class="card-title"><a href="{% url 'detail' car.id %}">{{car.name}}</a></h5>
-    <div class="card-body">
-      <p class="card-text">{{car.description}}</p>
-    </div><br>
-
-    <button class='btn btn-primary m-4' disabled >{{car.brand.name}}</button>
-    <br>
-    <p>Price: {{car.price}} BDT only</p>
-    <p>{{car.quantity}} left now</p>
-  </div>
-
-
-{% endfor %}
+        <!-- Car Price and Quantity -->
+        <div class="mt-2">
+          <p>{{car.quantity}} left now</p>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
 </div>
+
 
 {% endblock %}

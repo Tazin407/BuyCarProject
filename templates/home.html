@@ -16,18 +16,6 @@
   </div> {% endcomment %}
 </div>
 
-{% comment %} <div class='flex justify-center g-4 '>
-
-  <div class='border border-red-500'>
-    <h1 class='m-50 text-center'>Welcome to BuyCars</h1> 
-  </div>
-
-  <div class='border border-red-500'>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste atque sit aperiam id ex. Esse natus enim quae praesentium amet?</p>
-    <img class='m-auto w-50' src="static/car1.jpg" alt="">
-  </div>
-
-</div> {% endcomment %}
 
 <div class='m-4 text-center' >
   <h1 class="text-4xl font-bold text-rose-500">Sort by brands</h1><br>
@@ -35,20 +23,20 @@
 </div>
 
 <!-- Brand Filter Section -->
-<div class='flex justify-around m-5'>
+<div class='flex flex-wrap justify-around m-5 gap-2'>
   {% for b in brands %}
     <a href="{% url 'sort_brand' b.id %}" class='bg-rose-500 mt-4 p-2 rounded-md text-white'>{{b}}</a>
   {% endfor %}
 </div>
 
 <!-- Car Listing Section -->
-<div class="flex flex-wrap justify-around m-3 gap-4">
+<div class="flex flex-wrap justify-around m-3 gap-2">
   {% for car in cars %}
-    <div class="max-w-sm flex flex-col justify-between bg-black rounded-lg shadow dark:bg-gray-800 text-white p-1">
+    <div class=" m-1 max-w-md flex flex-col justify-between bg-black rounded-lg shadow dark:bg-gray-800 text-white p-1">
       
       <!-- Image Section -->
       <a href="#">
-        <div class="h-48 overflow-hidden">
+        <div class="h-48 overflow-hidden p-3">
           <img class="w-full h-full object-cover" src="{{car.image.url}}" alt="{{car.name}}" />
         </div>
       </a>
@@ -57,19 +45,17 @@
       <div class="flex flex-col justify-between p-4 h-full">
         <div>
           <a href="{% url 'detail' car.id %}">
-            <h5 class="mb-2 text-lg font-bold tracking-tight text-rose-400 dark:text-rose-400 ">{{car.name}}</h5>
+            <h5 class="mb-2 text-lg font-bold tracking-tight text-rose-400 ">{{car.name}}</h5>
           </a>
-          <p class="mb-2 font-normal text-white">{{car.description}}</p>
         </div>
 
         <!-- Car Brand (Disabled Button) -->
-        <div class="mt-2">
-          <button class="bg-rose-500 mt-4 w-full p-4 rounded-md " disabled>{{car.brand.name}}</button>
+        <div class="">
+          <button class="bg-rose-700 w-4/12 text-center p-4 rounded-full text-black" disabled>{{car.brand.name}}</button>
         </div>
 
         <!-- Car Price and Quantity -->
         <div class="mt-2">
-          <p class="font-semibold">Price: {{car.price}} BDT only</p>
           <p>{{car.quantity}} left now</p>
         </div>
       </div>

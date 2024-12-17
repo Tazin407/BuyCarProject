@@ -7,39 +7,37 @@
 </div>
 
 
-<div class="flex flex-wrap justify-around m-3 gap-4">
-{% for car in cars %}
-<div class="max-w-sm flex flex-col justify-between bg-black rounded-lg shadow dark:bg-gray-800 text-white p-1">
-  
-  <!-- Image Section -->
-  <a href="#">
-    <div class="h-48 overflow-hidden">
-      <img class="w-full h-full object-cover" src="{{car.image.url}}" alt="{{car.name}}" />
-    </div>
-  </a>
-
-  <!-- Content Section -->
-  <div class="flex flex-col justify-between p-4 h-full">
-    <div>
-      <a href="{% url 'detail' car.id %}">
-        <h5 class="mb-2 text-lg font-bold tracking-tight text-rose-400 dark:text-rose-400 ">{{car.name}}</h5>
+<div class="flex flex-wrap justify-around m-3 gap-2">
+  {% for car in cars %}
+    <div class=" m-1 max-w-md flex flex-col justify-between bg-black rounded-lg shadow dark:bg-gray-800 text-white p-1">
+      
+      <!-- Image Section -->
+      <a href="#">
+        <div class="h-48 overflow-hidden p-3">
+          <img class="w-full h-full object-cover" src="{{car.image.url}}" alt="{{car.name}}" />
+        </div>
       </a>
-      <p class="mb-2 font-normal text-white">{{car.description}}</p>
-    </div>
 
-    <!-- Car Brand (Disabled Button) -->
-    <div class="mt-2">
-      <button class="bg-rose-500 mt-4 w-full p-4 rounded-md " disabled>{{car.brand.name}}</button>
-    </div>
+      <!-- Content Section -->
+      <div class="flex flex-col justify-between p-4 h-full">
+        <div>
+          <a href="{% url 'detail' car.id %}">
+            <h5 class="mb-2 text-lg font-bold tracking-tight text-rose-400 ">{{car.name}}</h5>
+          </a>
+        </div>
 
-    <!-- Car Price and Quantity -->
-    <div class="mt-2">
-      <p class="font-semibold">Price: {{car.price}} BDT only</p>
-      <p>{{car.quantity}} left now</p>
+        <!-- Car Brand (Disabled Button) -->
+        <div class="">
+          <button class="bg-rose-700 w-4/12 text-center p-4 rounded-full text-black" disabled>{{car.brand.name}}</button>
+        </div>
+
+        <!-- Car Price and Quantity -->
+        <div class="mt-2">
+          <p>{{car.quantity}} left now</p>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-{% endfor %}
+  {% endfor %}
 </div>
 
 
