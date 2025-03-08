@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-bxl)q3dkk*m@zp7jn0tyrdx$@gaa!88u#7gy2#c_nm#7ore4n5
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://carsale-v9o7.onrender.com','https://*.127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://carsale-v9o7.onrender.com','https://car-buying.onrender.com/','https://*.127.0.0.1']
 
 
 # Application definition
